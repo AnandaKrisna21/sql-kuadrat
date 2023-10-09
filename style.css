@@ -1,0 +1,53 @@
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center; /* Untuk mengatur ke tengah secara horizontal */
+    align-items: center; /* Untuk mengatur ke tengah secara vertikal */
+    height: 100vh; /* Menggunakan tinggi viewport (100%) */
+    margin: 0;
+}
+
+.container {
+    background-color: orange;
+    width: 500px;
+    height: 320px;
+    border-radius: 20px;
+}
+
+.kata {
+    padding-top:50px;
+    padding-left: 20px;
+    font-size: 35px;
+}
+
+.box {
+    margin-top: 30px;
+    font-size: 35px;
+}
+
+.box input {
+    padding: 15px;
+    width: 350px;
+    height: 50px;
+    font-size: 30px;
+}
+
+button {
+    height: 50px;
+    width: 100px;
+    margin-top: 30px;
+    font-size: 35px;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.lihat {
+    margin-top: 10px;
+}
+

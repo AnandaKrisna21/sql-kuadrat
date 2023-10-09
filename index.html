@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hitung Akar Kuadrat</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="container" align="center">
+            <div class="kata" align="center">
+                <label for="bilangan">Kalkulator Akar Kuadrat</label>
+            </div>
+            <div class="box" align="center">
+                <input type="text" nama="nilaiInput" id="nilaiInput" required>
+            </div>
+            <div class="button">
+                <button onclick="hitungAkarKuadrat()">Hitung</button>
+            </div>
+            <div class="lihat">
+                <a href='view.php'>Lihat Log</a>
+            </div>
+            <div class="result" id="hasil"></div>
+            <script>
+                function validateInput() {
+                    const nilaiInput = document.getElementById('nilaiInput').value;
+                    const regex = /^[0-9]+\d*\.?\d*$/;
+
+                    if (nilaiInput === "" || !regex.test(nilaiInput)) {
+                        alert('Input tidak valid, harus angka dan bilangan bulat!');
+                        return false;
+                    } 
+                    return true;
+                }
+
+                function hitungAkarKuadrat() {
+                    if(validateInput()) {
+                        const nilaiInput = parseFloat(document.getElementById('nilaiInput').value);
+        
+                        // Menggunakan AJAX untuk memanggil skrip PHP
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("POST", "hitung_akar_kuadrat.php", true);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                const data = JSON.parse(xhr.responseText);
+                                document.getElementById('hasil').innerHTML = `Hasil Akar Kuadrat : ${data.hasil.toFixed(4)}, Iterasi: ${data.jumlah_iterasi}`;
+                            }
+                        };
+                        xhr.send("nilaiInput=" + nilaiInput);
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>
